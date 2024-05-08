@@ -11,7 +11,7 @@ const ibmPlexSerif = IBM_Plex_Serif({
 
 export const metadata: Metadata = {
   title: "BKA APP",
-  description: "BKA is a ultra advanced banking blatform for everyone.",
+  description: "BKA is a ultra advanced banking platform for everyone.",
   icons: {
     icon: "/icons/logo.svg",
   },
