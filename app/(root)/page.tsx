@@ -19,17 +19,21 @@ const page = () => {
           />
 
           <TotalBalanceBox
-            accounts={[]}
+            accounts={[
+              { currentBalance: 12312 },
+              { currentBalance: 2342 },
+              { currentBalance: 1234 },
+            ]}
             totalBanks={5}
             totalCurrentBalance={1500.5}
           />
         </header>
         RECENT TRANSACTIONS
       </div>
-      <RightSidebar 
-        user={loggedIn} 
-        transactions={[]} 
-        banks={[{currentBalance: 2000}, {currentBalance: 3000}]} 
+      <RightSidebar
+        user={loggedIn}
+        transactions={[]}
+        banks={[{ currentBalance: 2000 }, { currentBalance: 3000 }]}
       />
     </section>
   );
