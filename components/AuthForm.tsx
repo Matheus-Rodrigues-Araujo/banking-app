@@ -4,37 +4,31 @@ import Link from "next/link";
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, FieldPath } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+import { Form } from "@/components/ui/form";
 import { Button } from "./ui/button";
 import CustomInput from "./CustomInput";
 import { authFormSchema } from "@/lib/utils";
-
+import { Loader2 } from "lucide-react";
 
 const AuthForm = ({ type }: { type: string }) => {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof authFormSchema>>({
     resolver: zodResolver(authFormSchema),
     defaultValues: {
       email: "",
-      password: ""
+      password: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof authFormSchema>) {
+    setIsLoading(true);
     console.log(values);
+    setIsLoading(true);
   }
 
   return (
@@ -60,13 +54,55 @@ const AuthForm = ({ type }: { type: string }) => {
       {user ? (
         <div className="flex flex-col gap-4">{/*  */}</div>
       ) : (
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-            <CustomInput control={form.control} name="email" label="Email" placeholder="Enter your email"/>
-            <CustomInput control={form.control} name="password" label="Password" placeholder="Enter your password"/>
-            <Button type="submit" className="bg-blue-500 text-white w-full" >Submit</Button>
-          </form>
-        </Form>
+        <>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+              <CustomInput
+                control={form.control}
+                name="email"
+                label="Email"
+                placeholder="Enter your email"
+              />
+              <CustomInput
+                control={form.control}
+                name="password"
+                label="Password"
+                placeholder="Enter your password"
+              />
+              <div className="flex flex-col gap-4" >
+                <Button
+                  type="submit"
+                  disabled={isLoading}
+                  className="form-btn"
+                >
+                  {isLoading ? (
+                    <>
+                      <Loader2 size={20} className="animate-spin" />
+                      &nbsp; Loading...
+                    </>
+                  ) : type === "sign-in" ? (
+                    "Sign In"
+                  ) : (
+                    "Sign Up"
+                  )}
+                </Button>
+              </div>
+            </form>
+          </Form>
+          <footer className="flex justify-center gap-1">
+            <p>
+              {type === "sign-in"
+                ? "Don't have an account?"
+                : "Already have an account?"}
+            </p>
+            <Link
+              href={type === "sign-in" ? "/sign-up" : "/sign-in"}
+              className="form-link"
+            >
+              {type === "sign-in" ? "Sign Up" : "Sign In"}
+            </Link>
+          </footer>
+        </>
       )}
     </section>
   );
