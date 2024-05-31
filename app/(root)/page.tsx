@@ -1,12 +1,21 @@
+"use server";
 import HeaderBox from "@/components/HeaderBox";
 import RightSidebar from "@/components/RightSidebar";
 import TotalBalanceBox from "@/components/TotalBalanceBox";
-const page = () => {
+import { getLoggedInUser } from "@/lib/actions/user.actions";
+import { redirect } from "next/navigation";
+
+const page = async () => {
   const loggedIn = {
     firstName: "Matthew",
     lastName: "Rodriguez",
     email: "matheus@gmail.com",
   };
+
+  const user = await getLoggedInUser();
+  if (!user) redirect("/sign-up");
+  redirect("/");
+
   return (
     <section className="home">
       <div className="home-content">
