@@ -6,7 +6,8 @@ import React from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const Sidebar = ({ user }: SiderbarProps) => {
+// const Sidebar = ({ user }: SiderbarProps) => {
+const Sidebar = ({ user }: any) => {
   const pathname = usePathname();
 
   return (

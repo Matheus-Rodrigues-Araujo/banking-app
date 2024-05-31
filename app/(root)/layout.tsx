@@ -12,6 +12,7 @@ export default function Layout({
 
   return (
     <main className="flex w-full h-screen font-inter">
+
       <Sidebar user={loggedIn} />
       <div className="flex size-full flex-col">
         <div className="root-layout">
