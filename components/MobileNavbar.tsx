@@ -11,7 +11,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
-const MobileNavbar = ({ user }: MobileNavProps) => {
+// const MobileNavbar = ({ user }: MobileNavProps) => {
+const MobileNavbar = ({ user }: any) => {
   const pathname = usePathname();
   return (
     <section className="w-full max-w-[264px]">
