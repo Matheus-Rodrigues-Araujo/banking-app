@@ -12,7 +12,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Footer from "./Footer";
 
-const MobileNavbar = ({ user }: MobileNavProps) => {
+// const MobileNavbar = ({ user }: MobileNavProps) => {
+const MobileNavbar = ({ user }: any) => {
   const pathname = usePathname();
   return (
     <section className="w-full max-w-[264px]">
