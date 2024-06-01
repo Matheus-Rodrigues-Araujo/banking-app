@@ -6,15 +6,8 @@ import { getLoggedInUser } from "@/lib/actions/user.actions";
 import { redirect } from "next/navigation";
 
 const page = async () => {
-  const loggedIn = {
-    firstName: "Matthew",
-    lastName: "Rodriguez",
-    email: "matheus@gmail.com",
-  };
-
-  const user = await getLoggedInUser();
-  if (!user) redirect("/sign-up");
-  redirect("/");
+  const loggedIn = await getLoggedInUser()
+  if(!loggedIn) redirect("/sign-in")
 
   return (
     <section className="home">
@@ -23,11 +16,12 @@ const page = async () => {
           <HeaderBox
             type="greeting"
             title="Welcome"
-            user={loggedIn?.firstName || "Guest"}
+            user={loggedIn?.name || "Guest"}
             subtext="Access and manage your account and transactions efficiently."
           />
 
           <TotalBalanceBox
+          //@ts-ignore
             accounts={[
               { currentBalance: 12312 },
               { currentBalance: 2342 },

@@ -5,7 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-
+import Footer from "@/components/Footer";
 const Sidebar = ({ user }: SiderbarProps) => {
   const pathname = usePathname();
 
@@ -40,15 +40,16 @@ const Sidebar = ({ user }: SiderbarProps) => {
                   className={cn({ "brightness-[3] invert-0": isActive })}
                 />
               </div>
-              <p className={cn('sidebar-label', {'!text-white': isActive})} >{item.label}</p>
+              <p className={cn("sidebar-label", { "!text-white": isActive })}>
+                {item.label}
+              </p>
             </Link>
           );
         })}
-
         user
       </nav>
 
-      FOOTER
+      <Footer user={user} type="desktop" />
     </section>
   );
 };
