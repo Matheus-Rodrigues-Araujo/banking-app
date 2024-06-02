@@ -21,12 +21,8 @@ const page = async () => {
           />
 
           <TotalBalanceBox
-          //@ts-ignore
-            accounts={[
-              { currentBalance: 12312 },
-              { currentBalance: 2342 },
-              { currentBalance: 1234 },
-            ]}
+        // @ts-ignore
+            accounts={[{ currentBalance: 12312 },{ currentBalance: 2342 },{ currentBalance: 1234 }]}
             totalBanks={5}
             totalCurrentBalance={1500.5}
           />
@@ -36,6 +32,7 @@ const page = async () => {
       <RightSidebar
         user={loggedIn}
         transactions={[]}
+        // @ts-ignore
         banks={[{ currentBalance: 2000 }, { currentBalance: 3000 }]}
       />
     </section>
